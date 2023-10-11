@@ -317,7 +317,8 @@ def is_torch_bf16_gpu_available():
         if not hasattr(torch.cuda.amp, "autocast"):
             return False
     else:
-        return False
+        if not torch.version.hip:
+            return False
 
     return True
 
